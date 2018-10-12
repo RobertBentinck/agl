@@ -15,6 +15,9 @@ service: agl
 app: agl
 tenant: robertbentinck
 
+plugins:
+  - serverless-offline
+
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
@@ -57,8 +60,10 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  index:
     handler: handler.hello
+    events:
+      - http: GET hello
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
